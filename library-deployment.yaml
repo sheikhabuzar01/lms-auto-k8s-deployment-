@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auto-library-deployment
+spec:
+  replicas: 4
+
+  selector:
+    matchLabels:
+      app: library
+
+  template:
+    metadata:
+      labels:
+        app: library
+
+    spec:
+      containers:
+      - name: library-container
+        image: 709107513396.dkr.ecr.us-east-1.amazonaws.com/lms-project:1.0
+        
+        ports:
+        - containerPort: 5000
